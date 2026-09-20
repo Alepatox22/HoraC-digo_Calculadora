@@ -120,6 +120,7 @@ public class V1 extends JFrame implements ActionListener {
 		JButton btn_Divi = new JButton("División /");
 		btn_Divi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Botón de división Alejandro Córdova
 				try {
 					txtS.setText("");
 					Calculadora calc_div=new Calculadora(txtNum1.getText(), txtNum2.getText());
