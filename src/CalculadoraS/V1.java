@@ -84,7 +84,7 @@ public class V1 extends JFrame implements ActionListener {
 					//double resultado = num1+num2;
 					//txtS.setText("Resultado: "+ resultado);	
 					Calculadora sum=new Calculadora(num1, num2);
-					txtS.setText("El resultado es: "+ sum.sumar(num1, num2));	
+					txtS.setText("El resultado de la suma es: "+ "\n"+sum.sumar(num1, num2));	
 				//} catch(NumberFormatException ex) {
 					//txtS.setText("Ingrese valores numéricos válidos");
 				// 
@@ -98,6 +98,17 @@ public class V1 extends JFrame implements ActionListener {
 		contentPane.add(btn_Sum);
 		
 		JButton btn_Res = new JButton("Resta -");
+		btn_Res.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					txtS.setText("");
+					Calculadora calc_rest=new Calculadora(txtNum1.getText(), txtNum2.getText());
+					txtS.append("La resta de los números es: "+"\n"+calc_rest.restar());
+					} catch (Exception e2) {
+						MostrarError();
+					}
+			}
+		});
 		btn_Res.setBounds(27, 101, 130, 23);
 		contentPane.add(btn_Res);
 		
@@ -107,6 +118,17 @@ public class V1 extends JFrame implements ActionListener {
 		contentPane.add(btn_Multi);
 		
 		JButton btn_Divi = new JButton("División /");
+		btn_Divi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					txtS.setText("");
+					Calculadora calc_div=new Calculadora(txtNum1.getText(), txtNum2.getText());
+					txtS.append("La división de los números es: "+"\n"+calc_div.dividir());
+					} catch (Exception e2) {
+						MostrarError();
+					}
+			}
+		});
 		btn_Divi.setBounds(27, 169, 130, 23);
 		contentPane.add(btn_Divi);
 		{
@@ -146,10 +168,8 @@ public class V1 extends JFrame implements ActionListener {
 	protected void do_btn_Multi_actionPerformed(ActionEvent e) {
 		try {
 		txtS.setText("");
-		double a=Double.parseDouble(txtNum1.getText());
-		double b=Double.parseDouble(txtNum2.getText());
-		Calculadora calc_mult=new Calculadora(a, b);
-		txtS.append("La multiplicación de los números es: "+"\n"+calc_mult.multiplicar(a,b));
+		Calculadora calc_mult=new Calculadora(txtNum1.getText(), txtNum2.getText());
+		txtS.append("La multiplicación de los números es: "+"\n"+calc_mult.multiplicar());
 		} catch (Exception e2) {
 			MostrarError();
 		}
@@ -158,7 +178,7 @@ public class V1 extends JFrame implements ActionListener {
 		 System.exit(0);
 	}
 	private void MostrarError() {
-		JOptionPane.showMessageDialog(this, "Digite números 1 y 2");
+		JOptionPane.showMessageDialog(this, "Digite dos números reales");
 	}
 	protected void do_btn_Reset_actionPerformed(ActionEvent e) {
 		txtNum1.setText("");
